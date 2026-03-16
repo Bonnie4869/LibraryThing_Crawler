@@ -1,9 +1,8 @@
 # LibraryThing_Crawler
-This project is a crawler to collect book description from LibraryThing website.
-
 
 # 1. Description
 This project is a crawler to collect book description from LibraryThing website.
+It is used for crawling the book description with Dewey Decimal System (Melvil Decimal System | MDS).
 You first need to crawl the book_id using `crawler_bookid` crawler, and get the book_id database.
 Then, you can use `crawler_book_description` crawler to collect book description.
 
