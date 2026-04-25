@@ -1,15 +1,20 @@
-# LibraryThing_Crawler
-
 # 1. Description
 This project is a crawler to collect book description from LibraryThing website.
-It is used for crawling the book description with Dewey Decimal System (Melvil Decimal System | MDS).
 You first need to crawl the book_id using `crawler_bookid` crawler, and get the book_id database.
 Then, you can use `crawler_book_description` crawler to collect book description.
 
 # 2. Usage
-## 2.1 library
+## 2.1 Installation
 1. Install the dependencies in your environment.    
     ```pip install -r requirements.txt```
+2. If you program works, just ignore this step.
+Otherwise, please download the driver on the internet.
+The crawler with selenium need browser driver to work.
+If you use chrome, please download the chrome driver.
+If you use edge, please download the edge driver.
+
+In `crawler_book_description`, default using the chrome driver. 
+Or you can comment the chrome and use the edge driver. The code is put below chrome driver class.
 
 ## 2.2 crawler_bookid
 Run the crawler to collect book_id.
