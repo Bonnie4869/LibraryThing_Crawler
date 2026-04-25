@@ -40,6 +40,41 @@ class BookDescriptionDB:
 
         self.conn.commit()
 
+    def delete_by_bookid(self, bookid):
+        query = "DELETE FROM book_description WHERE bookid = ?"
+        self.conn.execute(query, (bookid,))
+        self.conn.commit()
+
+    def search_by_bookid(self, bookid):
+        """根据 bookid 精确搜索"""
+        query = "SELECT * FROM book_description WHERE bookid = ?"
+        cursor = self.conn.execute(query, (str(bookid),))
+        return cursor.fetchall()
+
+    def count_net_blocked(self):
+        query = """
+        SELECT COUNT(*)
+        FROM book_description
+        WHERE description = 'Net_blocked'
+        """
+        cursor = self.conn.execute(query)
+        return cursor.fetchone()[0]
+
+    def delete_net_blocked(self):
+        query = """
+        DELETE FROM book_description
+        WHERE description = 'Net_blocked'
+        """
+        cursor = self.conn.execute(query)
+        self.conn.commit()
+        return cursor.rowcount
+
     def close(self):
 
         self.conn.close()
+
+
+db = BookDescriptionDB()
+print(db.count_net_blocked())
+print(db.delete_net_blocked())
+db.close()

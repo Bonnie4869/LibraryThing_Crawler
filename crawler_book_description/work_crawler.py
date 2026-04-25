@@ -16,7 +16,17 @@ class LibraryThingWorkCrawler:
         if "Enable JavaScript" in html:
             return "Net_blocked"
 
-        desc = soup.select_one("#section_description span[id^='tdh_']")
+        # Check for title, if not found return Net_blocked
+        title = soup.select_one("h1.h1_work_title")
+        if not title:
+            return "Net_blocked"
+
+        desc = "None"
+        try:
+            desc = soup.select_one("#section_description span[id^='tdh_']")
+
+        except Exception as e:
+            print(f"Error occurred while parsing description: {e}")
 
         if not desc:
             return "None"

@@ -63,7 +63,7 @@ def main():
 
         driver.get_page(url)
 
-        time.sleep(random.uniform(3, 5))
+        time.sleep(random.uniform(4, 6))
 
         html = driver.current_page()
 
